@@ -50,6 +50,25 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         return true;
     }
 
+    public T getRecursive(int index) {
+        if (!isValidIndex(index)) {
+            return null;
+        }
+
+        return recursiveGet(sentinel.next, index).item;
+    }
+
+    /**
+     * Helper method for getRecursive()
+     */
+    private Node recursiveGet(Node curr, int index) {
+        if (index == 0) {
+            return curr;
+        }
+
+        return recursiveGet(curr.next, index - 1);
+    }
+
     @Override
     public void addFirst(T x) {
         Node currFirst = sentinel.next;

@@ -176,10 +176,6 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return array[accessibleIndex(index + head + 1)];
     }
 
-    public T getRecursive(int index) {
-        throw new UnsupportedOperationException("No need to implement getRecursive for proj 1b");
-    }
-
     public void clear() {
         array = (T[]) new Object[8];
         size = 0;
