@@ -58,6 +58,16 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         return recursiveGet(sentinel.next, index).item;
     }
 
+    @Override
+    public void printDeque() {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < size(); i++) {
+            res.append(get(i));
+            res.append(" ");
+        }
+        System.out.println(res);
+    }
+
     /**
      * Helper method for getRecursive()
      */

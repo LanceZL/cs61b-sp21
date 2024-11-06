@@ -18,12 +18,5 @@ public interface Deque<T> extends Iterable<T> {
 
     T get(int index);
 
-    default void printDeque() {
-        StringBuilder res = new StringBuilder();
-        for (int i = 0; i < size(); i++) {
-            res.append(get(i));
-            res.append(" ");
-        }
-        System.out.println(res);
-    };
+    void printDeque();
 }

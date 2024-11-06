@@ -151,6 +151,16 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     }
 
     @Override
+    public void printDeque() {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < size(); i++) {
+            res.append(get(i));
+            res.append(" ");
+        }
+        System.out.println(res);
+    }
+
+    @Override
     public T removeLast() {
         if (size == 0) {
             return null;
