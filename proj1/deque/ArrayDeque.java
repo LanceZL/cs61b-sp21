@@ -31,13 +31,13 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return false;
         }
 
-        if (!(o instanceof ArrayDeque<?>)) {
+        if (!(o instanceof Deque<?>)) {
             return false;
         }
 
         // Compare size
-        ArrayDeque<T> other = (ArrayDeque<T>) o;
-        if (this.size != other.size) {
+        Deque<T> other = (Deque<T>) o;
+        if (this.size != other.size()) {
             return false;
         }
         // Compare the elements
