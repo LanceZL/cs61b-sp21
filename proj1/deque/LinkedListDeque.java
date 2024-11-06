@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class LinkedListDeque<T> implements Iterable<T> {
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private final Node sentinel;
     private int size;
 
@@ -19,7 +19,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
         return new LinkedListDeque61BIterator();
     }
 
-    
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -50,21 +50,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
         return true;
     }
 
-    public void printDeque() {
-        StringBuilder res = new StringBuilder();
-        for (int i = 0; i < size; i++) {
-            res.append(get(i));
-            res.append(" ");
-        }
-        System.out.println(res);
-    }
-
-    /**
-     * Add {@code x} to the front of the deque. Assumes {@code x} is never null.
-     *
-     * @param x item to add
-     */
-    
+    @Override
     public void addFirst(T x) {
         Node currFirst = sentinel.next;
         Node newFirst = new Node(x);
@@ -80,12 +66,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
         size += 1;
     }
 
-    /**
-     * Add {@code x} to the back of the deque. Assumes {@code x} is never null.
-     *
-     * @param x item to add
-     */
-    
+    @Override
     public void addLast(T x) {
         Node currLast = sentinel.prev;
         Node newLast = new Node(x);
@@ -98,32 +79,12 @@ public class LinkedListDeque<T> implements Iterable<T> {
         size += 1;
     }
 
-    /**
-     * Returns if the deque is empty. Does not alter the deque.
-     *
-     * @return {@code true} if the deque has no elements, {@code false} otherwise.
-     */
-    
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    /**
-     * Returns the size of the deque. Does not alter the deque.
-     *
-     * @return the number of items in the deque.
-     */
-    
+    @Override
     public int size() {
         return size;
     }
 
-    /**
-     * Remove and return the element at the front of the deque, if it exists.
-     *
-     * @return removed element, otherwise {@code null}.
-     */
-    
+    @Override
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -140,12 +101,8 @@ public class LinkedListDeque<T> implements Iterable<T> {
         return currFirst.item;
     }
 
-    /**
-     * Remove and return the element at the back of the deque, if it exists.
-     *
-     * @return removed element, otherwise {@code null}.
-     */
-    
+
+    @Override
     public T removeLast() {
         if (isEmpty()) {
             return null;
@@ -162,16 +119,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
         return currLast.item;
     }
 
-    /**
-     * The Deque61B abstract data type does not typically have a get method,
-     * but we've included this extra operation to provide you with some
-     * extra programming practice. Gets the element, iteratively. Returns
-     * null if index is out of bounds. Does not alter the deque.
-     *
-     * @param index index to get
-     * @return element at {@code index} in the deque
-     */
-    
+    @Override
     public T get(int index) {
         if (!isValidIndex(index)) {
             return null;
@@ -190,37 +138,6 @@ public class LinkedListDeque<T> implements Iterable<T> {
         return index >= 0 && index < size;
     }
 
-    /**
-     * This method technically shouldn't be in the interface, but it's here
-     * to make testing nice. Gets an element, recursively. Returns null if
-     * index is out of bounds. Does not alter the deque.
-     *
-     * @param index index to get
-     * @return element at {@code index} in the deque
-     */
-    
-    public T getRecursive(int index) {
-        if (!isValidIndex(index)) {
-            return null;
-        }
-
-        return recursiveGet(sentinel.next, index).item;
-    }
-
-    /**
-     * Helper method for getRecursive()
-     */
-    private Node recursiveGet(Node curr, int index) {
-        if (index == 0) {
-            return curr;
-        }
-
-        return recursiveGet(curr.next, index - 1);
-    }
-
-    /**
-     * Non-static Node class. Accept outer class's T as it's item's type.
-     */
     private class Node {
         private Node prev;
         private Node next;
