@@ -128,16 +128,16 @@ public class LinkedListDequeTest {
     public void equalsTest() {
         Deque<Integer> d1 = new LinkedListDeque<>();
         Deque<Integer> d2 = new LinkedListDeque<>();
-        Deque<Integer> d3 = new LinkedListDeque<>();
+        Deque<Integer> d3 = new ArrayDeque<>();
 
         for (int i = 0; i < 1000; i++) {
             d1.addLast(i);
             d2.addLast(i);
+            d3.addLast(i);
         }
         assertThat(d1.equals(d2)).isTrue();
 
         // Edge case
-        assertThat(d1.equals(d3)).isFalse();
-
+        assertThat(d1.equals(d3)).isTrue();
     }
 }
