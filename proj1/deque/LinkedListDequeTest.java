@@ -1,6 +1,8 @@
 package deque;
 
 import org.junit.Test;
+
+import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.*;
 
 
@@ -120,5 +122,22 @@ public class LinkedListDequeTest {
         for (double i = 999999; i > 500000; i--) {
             assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
         }
+    }
+
+    @Test
+    public void equalsTest() {
+        Deque<Integer> d1 = new LinkedListDeque<>();
+        Deque<Integer> d2 = new LinkedListDeque<>();
+        Deque<Integer> d3 = new LinkedListDeque<>();
+
+        for (int i = 0; i < 1000; i++) {
+            d1.addLast(i);
+            d2.addLast(i);
+        }
+        assertThat(d1.equals(d2)).isTrue();
+
+        // Edge case
+        assertThat(d1.equals(d3)).isFalse();
+
     }
 }
