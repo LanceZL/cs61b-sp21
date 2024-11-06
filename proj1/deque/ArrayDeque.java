@@ -14,8 +14,8 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private final int SMALLSIZE = 16;
     private final int SHRUNKSTEP = 2;
 
-    public ArrayDeque(int capacity) {
-        array = (T[]) new Object[capacity];
+    public ArrayDeque() {
+        array = (T[]) new Object[8];
         size = 0;
         head = -1;
         tail = 0;
