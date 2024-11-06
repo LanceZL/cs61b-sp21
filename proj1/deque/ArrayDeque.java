@@ -1,8 +1,6 @@
 package deque;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class ArrayDeque<T> implements Iterable<T> {
     T[] array;
@@ -66,11 +64,6 @@ public class ArrayDeque<T> implements Iterable<T> {
             res.append(" ");
         }
         System.out.println(res);
-    }
-
-    @Override
-    public String toString() {
-        return toList().toString();
     }
 
     public void addFirst(T x) {
@@ -139,18 +132,6 @@ public class ArrayDeque<T> implements Iterable<T> {
         array[accessibleIndex(tail)] = x;
         tail += 1;
         size += 1;
-    }
-
-    public List<T> toList() {
-        if (size == 0) {
-            return List.of();
-        }
-
-        List<T> res = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            res.add(array[accessibleIndex(head + i + 1)]);
-        }
-        return res;
     }
 
     public boolean isEmpty() {

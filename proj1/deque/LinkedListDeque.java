@@ -1,8 +1,6 @@
 package deque;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class LinkedListDeque<T> implements Iterable<T> {
     private final Node sentinel;
@@ -52,11 +50,6 @@ public class LinkedListDeque<T> implements Iterable<T> {
         return true;
     }
 
-    
-    public String toString() {
-        return toList().toString();
-    }
-
     public void printDeque() {
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < size; i++) {
@@ -103,28 +96,6 @@ public class LinkedListDeque<T> implements Iterable<T> {
         sentinel.prev = newLast;
 
         size += 1;
-    }
-
-    /**
-     * Returns a List copy of the deque. Does not alter the deque.
-     *
-     * @return a new list copy of the deque.
-     */
-    
-    public List<T> toList() {
-        if (size == 0) {
-            return List.of();
-        }
-
-        List<T> items = new ArrayList<>();
-
-        // Pointer to iterate the deque.
-        Node curr = sentinel.next;
-        for (int i = 0; i < size; i++) {
-            items.add(curr.item);
-            curr = curr.next;
-        }
-        return items;
     }
 
     /**
