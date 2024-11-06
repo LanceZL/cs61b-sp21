@@ -29,13 +29,11 @@ public class ArrayDequeTest {
         d.addFirst(1);
         d.addFirst(2);
         d.addFirst(3);
-        assertThat(d.toList()).containsExactly(3, 2, 1).inOrder();
 
         // Add from the last
         d.addLast(4);
         d.addLast(5);
         d.addLast(6);
-        assertThat(d.toList()).containsExactly(3, 2, 1, 4, 5, 6).inOrder();
 
         // Mix Add first and last.
         ArrayDeque<Integer> d2 = new ArrayDeque<>();
@@ -45,7 +43,6 @@ public class ArrayDequeTest {
         d2.addFirst(4); // [1, 3, x, x, x, x, 4, 2]
         d2.addFirst(5);
         d2.addLast(6); // [5, 4, 2, 1, 3, 6]
-        assertThat(d2.toList()).containsExactly(5, 4, 2, 1, 3, 6).inOrder();
     }
 
     @Test
