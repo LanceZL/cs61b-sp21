@@ -172,7 +172,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         private Node next;
         private final T item;
 
-        public Node(T x) {
+        Node(T x) {
             item = x;
         }
     }
@@ -180,7 +180,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private class LinkedListDeque61BIterator implements Iterator<T> {
         Node curr;
 
-        public LinkedListDeque61BIterator() {
+        LinkedListDeque61BIterator() {
             curr = sentinel;
         }
 

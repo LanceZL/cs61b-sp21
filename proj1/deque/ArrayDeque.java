@@ -3,7 +3,7 @@ package deque;
 import java.util.Iterator;
 
 public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
-    T[] array;
+    private T[] array;
     // Use two pointers, head and tail to track the deque.
     // To eliminate the edge case, let the head = -1, and tail = 0.
     // They will never overlap since we will resize the Deque first.
@@ -13,13 +13,6 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private final int MINIMUMSIZE = 8;
     private final int SMALLSIZE = 16;
     private final int SHRUNKSTEP = 2;
-
-    public ArrayDeque() {
-        array = (T[]) new Object[8];
-        size = 0;
-        head = -1;
-        tail = 0;
-    }
 
     public ArrayDeque(int capacity) {
         array = (T[]) new Object[capacity];
@@ -184,13 +177,6 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return null;
         }
         return array[accessibleIndex(index + head + 1)];
-    }
-
-    public void clear() {
-        array = (T[]) new Object[8];
-        size = 0;
-        head = -1;
-        tail = 0;
     }
 
     public Iterator<T> iterator() {
